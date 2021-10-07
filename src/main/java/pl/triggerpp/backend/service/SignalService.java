@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SignalService {
-    public Long getLastProviderId() {
+    public int getLastProviderId() {
 
-        return 18L;
+        return 18;
     }
 }

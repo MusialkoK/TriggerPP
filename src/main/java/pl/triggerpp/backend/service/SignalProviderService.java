@@ -14,13 +14,13 @@ public class SignalProviderService {
 
     private final SignalService signalService;
 
-    @Value("${signalProviderUrl}")
+    @Value("${signalProvider.url}")
     private String baseUrl;
 
-    @Scheduled(fixedDelay = 10_000)
+    @Scheduled(fixedDelayString = "${signalProvider.delay}")
     public void isNewSignalAppeared(){
         try{
-            long nextSignalId = +signalService.getLastProviderId();
+            int nextSignalId = +signalService.getLastProviderId();
             URL url = new URL(baseUrl + nextSignalId);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
